@@ -155,7 +155,7 @@ void printSingleDisk (int n, int* r, int i)
             printf(" ");
         }
     }
-    else;
+    else
     {
         for (int j = 0; j < ((n * 2) + 1 - r[i])/2 ; j++) //white spaces
         {
