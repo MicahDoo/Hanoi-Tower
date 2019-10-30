@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-int a[10] = {0}, b[10] = {0}, c[10] = {0}, start = 1, counter = 0;
+int a[20] = {0}, b[20] = {0}, c[20] = {0}, start = 1, counter = 0;
 int N = 0;
 char fromRod, toRod;
 void moves(int n, int* x, int* y);
@@ -15,11 +15,11 @@ int main()
         {
             a[i] = 0; b[i] = 0; c[i] = 0;
         }
-    start = 1; //restarts
-    counter = 0; //resets counter
+        start = 1;
+        counter = 0; //restart, reset
     printf("How many disks are there? (Maximum = 10, Enter 0 to exit guide) ");
     scanf("%d", &N);
-        if (N < 0 || N > 10)
+        if (N < 0 || N > 15)
         {
             printf("N outside of acceptable range. Try Again.\n");
         }
@@ -155,7 +155,7 @@ void printSingleDisk (int n, int* r, int i)
             printf(" ");
         }
     }
-    else
+    else;
     {
         for (int j = 0; j < ((n * 2) + 1 - r[i])/2 ; j++) //white spaces
         {
@@ -163,7 +163,7 @@ void printSingleDisk (int n, int* r, int i)
         }
         for (int j = 0; j < r[i]; j++) //disk
         {
-            printf("*");
+            printf("█");
         }
         for (int j = 0; j < ((n * 2) + 1 - r[i])/2 ; j++) //white spaces
         {
