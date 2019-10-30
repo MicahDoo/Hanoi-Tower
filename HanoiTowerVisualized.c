@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define ANSI_COLOR_RED "\x1b[31m"
+#define ANSI_COLOR_CYAN "\x1b[36m"
+#define ANSI_COLOR_RESET "\x1b[0m"
 int a[20] = {0}, b[20] = {0}, c[20] = {0}, start = 1, counter = 0;
 int N = 0;
 char fromRod, toRod;
@@ -148,7 +151,7 @@ void printSingleDisk (int n, int* r, int i)
         }
         for (int j = 0; j < 1; j++) //white spaces
         {
-            printf("|");
+            printf(ANSI_COLOR_RED"|"ANSI_COLOR_RESET);
         }
         for (int j = 0; j < n; j++) //white spaces
         {
@@ -163,7 +166,7 @@ void printSingleDisk (int n, int* r, int i)
         }
         for (int j = 0; j < r[i]; j++) //disk
         {
-            printf("█");
+            printf(ANSI_COLOR_CYAN"█"ANSI_COLOR_RESET);
         }
         for (int j = 0; j < ((n * 2) + 1 - r[i])/2 ; j++) //white spaces
         {
