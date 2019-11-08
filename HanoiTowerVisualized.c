@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define ANSI_COLOR_RED "\x1b[31m"
-#define ANSI_COLOR_CYAN "\x1b[36m"
-#define ANSI_COLOR_RESET "\x1b[0m"
+#define ANSI_COLOR_RED //"\x1b[31m"
+#define ANSI_COLOR_CYAN //"\x1b[36m"
+#define ANSI_COLOR_RESET //"\x1b[0m"
 int a[20] = {0}, b[20] = {0}, c[20] = {0}, start = 1, counter = 0;
 int N = 0;
 char fromRod, toRod;
@@ -14,10 +14,7 @@ int main()
 {
     while(1)
     {
-        for(int i = 0; i <20; i++)  //clears all rods
-        {
-            a[i] = 0; b[i] = 0; c[i] = 0;
-        }
+        for(int i = 0; i <20; i++, a[i] = 0, b[i] = 0, c[i] = 0);  //clears all rods
         start = 1;
         counter = 0; //restart, reset
     printf("How many disks are there? (Maximum = 10, Enter 0 to exit guide) ");
@@ -49,13 +46,7 @@ void moves(int n, int* x, int* y)
    
     if (start == 1)
     {
-        for(int i = 0; i < N; i++) //initializing
-        {
-            x[i] = 2 * i + 1; //diameter of the disk
-        }
-        printf("Start\n");
-        printDisks(N, a, b, c);
-        start = 0;
+        for(int i = 0; i < N; i++, x[i] = 2 * i + 1, printf("Start\n"), printDisks(N, a, b, c),start = 0); //initializing //x = diameter of the disk
     }
     if (n == 1)
     {
@@ -74,14 +65,10 @@ void moves(int n, int* x, int* y)
                     }
                     else continue;
                 }
-                if (y[N-1] == 0)
-                {
-                    y[N-1] = x[i];
-                }
+                y[N-1] = y[N-1] == 0?x[i]:y[N-1];
                 x[i] = 0;
                 break;
             }
-            else continue;
         }
         printDisks(N, a, b, c);
     }
@@ -102,75 +89,22 @@ void printDisks(int n, int* x, int* y, int* z)
         printSingleDisk (n, z, i);
         printf("\n");
     }
-    for (int j = 0; j < n; j++) //white spaces
-    {
-        printf(" ");
-    }
-    for (int j = 0; j < 1; j++) //white spaces
-    {
-        printf("A");
-    }
-    for (int j = 0; j < n; j++) //white spaces
-    {
-        printf(" ");
-    }
-    for (int j = 0; j < n; j++) //white spaces
-    {
-        printf(" ");
-    }
-    for (int j = 0; j < 1; j++) //white spaces
-    {
-        printf("B");
-    }
-    for (int j = 0; j < n; j++) //white spaces
-    {
-        printf(" ");
-    }
-    for (int j = 0; j < n; j++) //white spaces
-    {
-        printf(" ");
-    }
-    for (int j = 0; j < 1; j++) //white spaces
-    {
-        printf("C");
-    }
-    for (int j = 0; j < n; j++) //white spaces
-    {
-        printf(" ");
-    }
-    printf("\n\n");
+    printf("%*s%*s%*s%*s%*s%*s\n\n", n+1, "A", n, " ", n+1, "B", n, " ", n+1, "C", n, " ");
 }
 
 void printSingleDisk (int n, int* r, int i)
 {
     if (r[i] == 0)
     {
-        for (int j = 0; j < n; j++) //white spaces
-        {
-            printf(" ");
-        }
-        for (int j = 0; j < 1; j++) //white spaces
-        {
-            printf(ANSI_COLOR_RED"|"ANSI_COLOR_RESET);
-        }
-        for (int j = 0; j < n; j++) //white spaces
-        {
-            printf(" ");
-        }
+            printf("%*s%*s", n+1, "|", n, " ");
     }
     else
     {
-        for (int j = 0; j < ((n * 2) + 1 - r[i])/2 ; j++) //white spaces
-        {
-            printf(" ");
-        }
+        printf("%*s", ((n * 2) + 1 - r[i])/2, " ");
         for (int j = 0; j < r[i]; j++) //disk
         {
             printf(ANSI_COLOR_CYAN"█"ANSI_COLOR_RESET);
         }
-        for (int j = 0; j < ((n * 2) + 1 - r[i])/2 ; j++) //white spaces
-        {
-            printf(" ");
-        }
+        printf("%*s", ((n * 2) + 1 - r[i])/2, " ");
     }
 }
