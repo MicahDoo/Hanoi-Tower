@@ -4,11 +4,11 @@
 #define ANSI_COLOR_CYAN "\x1b[36m"
 #define ANSI_COLOR_RESET "\x1b[0m"
 int a[20] = {0}, b[20] = {0}, c[20] = {0}, start = 1, counter = 0;
-int N = 0;
-char fromRod, toRod;
-void moves(int n, int* x, int* y);
-void printDisks(int n, int* x, int* y, int* z);
-void printSingleDisk (int n, int* r, int i);
+int N = 0; //N is the number of rods, input by the user
+char fromRod, toRod; //fromRod = the alphabet name of the rod where the disk are moved from
+void moves(int n, int* x, int* y); //move a total of n disks from Rod x to Rod y
+void printDisks(int n, int* x, int* y, int* z); //printf all the disks distribution, including the rods
+void printSingleDisk (int n, int* r, int i); //printf each individual disk or rod section, the size of the former varying
 
 int main()
 {
@@ -18,8 +18,8 @@ int main()
         {
             a[i] = 0; b[i] = 0; c[i] = 0;
         }
-        start = 1;
-        counter = 0; //restart, reset
+        start = 1; //restart; when start=1, put all disks on the starting rod
+        counter = 0; //reset; tracks how many steps the program has gone through
     printf("How many disks are there? (Maximum = 15, Enter 0 to exit guide) ");
     scanf("%d", &N);
         if (N < 0 || N > 15)
