@@ -20,7 +20,7 @@ int main()
         }
         start = 1;
         counter = 0; //restart, reset
-    printf("How many disks are there? (Maximum = 10, Enter 0 to exit guide) ");
+    printf("How many disks are there? (Maximum = 15, Enter 0 to exit guide) ");
     scanf("%d", &N);
         if (N < 0 || N > 15)
         {
@@ -60,11 +60,11 @@ void moves(int n, int* x, int* y)
     if (n == 1)
     {
         counter++;
-        printf("Step %d: Move 1 disk from %c to %c\n", counter, fromRod, toRod);
         for(int i = 0; i < N; i++ ) //moves top item of x to top of y
         {
             if (x[i] != 0)
             {
+                printf("Step %d: Move Disk %d from %c to %c\n", counter, (x[i]-1)/2+1, fromRod, toRod);
                 for(int j = 0; j < N; j++)
                 {
                     if (y[j] != 0)
